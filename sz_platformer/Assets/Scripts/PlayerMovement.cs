@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine. UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -11,6 +12,23 @@ public class PlayerMovement : MonoBehaviour
     bool isJumping;
 
     Rigidbody2D rb;
+    public static playermovement instance;
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            instance = this;
+        }
+
+        else
+        {
+            Destroy(gameObject);
+        }
+
+    }
+    
 
     // Start is called before the first frame update
     void Start()
